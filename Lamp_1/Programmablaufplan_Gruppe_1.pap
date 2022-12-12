@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FRAME GUID="2FB25471-B62C-4EE6-BD43-F819C095ACF8" FORMAT="0000" APP_VERSION="2.2.0.8" CHECKSUM="A07BB27B56973A28">
+  <PROJECT FORMAT="1.00" NAME="Programmablaufplan_Gruppe_1" AUTHOR="Jonas, Benjamin, Henri, Johannes" CREATED="2022.11.28 17:53:17" MODIFIED="2022.11.28 18:50:36">
+    <DIAGRAMS>
+      <DIAGRAM FORMAT="1.00" ID="0" NAME="Lamp 1" CREATED="2022.11.28 17:53:44" MODIFIED="2022.11.28 18:50:36">
+        <LAYOUT FORMAT="1.00" COLUMNS="3" ROWS="12">
+          <ENTRIES>
+            <ENTRY COLUMN="0" ROW="6">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="40">
+                <TEXT><![CDATA[Lamp 1 50%]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="0" ROW="8">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="56">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="0" ANCHOR="True">
+              <FIGURE SUBTYPE="PapTitle" FORMAT="1.00" ID="0">
+                <TEXT><![CDATA[Lamp 1]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="1">
+              <FIGURE SUBTYPE="PapStart" FORMAT="1.00" ID="1">
+                <TEXT><![CDATA[Start]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="2">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="26">
+                <TEXT><![CDATA[subscribe Position 2]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="3">
+              <FIGURE SUBTYPE="PapLoopStart" FORMAT="1.00" ID="20" ASSOCIATE="22">
+                <TEXT><![CDATA[while(1)]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="4">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="17">
+                <TEXT><![CDATA[Sensor abrufen]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="5">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="28">
+                <TEXT><![CDATA[Person an Position 1?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="6">
+              <FIGURE SUBTYPE="PapCondition" FORMAT="1.00" ID="36">
+                <TEXT><![CDATA[Person an Position 2?]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="7">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="34">
+                <TEXT><![CDATA[Lamp 1 0%]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="8">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="43">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="9">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="18">
+                <TEXT><![CDATA[publish Position 1]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="10">
+              <FIGURE SUBTYPE="PapLoopEnd" FORMAT="1.00" ID="22" ASSOCIATE="20">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="1" ROW="11">
+              <FIGURE SUBTYPE="PapEnd" FORMAT="1.00" ID="2">
+                <TEXT><![CDATA[Ende]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="5">
+              <FIGURE SUBTYPE="PapActivity" FORMAT="1.00" ID="32">
+                <TEXT><![CDATA[Lamp 1 100%]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+            <ENTRY COLUMN="2" ROW="8">
+              <FIGURE SUBTYPE="PapConnector" FORMAT="1.00" ID="52">
+                <TEXT><![CDATA[]]></TEXT>
+              </FIGURE>
+            </ENTRY>
+          </ENTRIES>
+        </LAYOUT>
+        <CONNECTIONS>
+          <CONNECTION FORMAT="1.00" ID="3" FROM="1" TO="26" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="42" FROM="32" TO="52" TEXT="Position 1 ja" />
+          <CONNECTION FORMAT="1.00" ID="23" FROM="22" TO="2" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="31" FROM="28" TO="32" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="25" FROM="18" TO="22" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="27" FROM="26" TO="20" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="24" FROM="17" TO="28" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="21" FROM="20" TO="17" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="46" FROM="43" TO="18" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="37" FROM="36" TO="34" TEXT="nein" />
+          <CONNECTION FORMAT="1.00" ID="47" FROM="36" TO="40" TEXT="ja" />
+          <CONNECTION FORMAT="1.00" ID="35" FROM="34" TO="43" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="29" FROM="28" TO="36" TEXT="nein" />
+          <CONNECTION FORMAT="1.00" ID="53" FROM="52" TO="43" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="58" FROM="56" TO="43" TEXT="" />
+          <CONNECTION FORMAT="1.00" ID="55" FROM="40" TO="56" TEXT="Position 1 nein" />
+        </CONNECTIONS>
+      </DIAGRAM>
+    </DIAGRAMS>
+  </PROJECT>
+</FRAME>
