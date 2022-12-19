@@ -15,8 +15,10 @@ address="test.mosquitto.org"
 
 # connect
 client = mqtt.Client()
-client.username_pw_set(username, password)
 client.connect(address, 1883, 60)
+topic_lamp1 = "hska/lamp1/position"
+topic_lamp2 = "hska/lamp2/position"
+
 
 
 #INIT ultrasonic Sensor
@@ -30,6 +32,16 @@ GPIO_ECHO = 24
 #set GPIO direction (IN / OUT)
 GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
 GPIO.setup(GPIO_ECHO, GPIO.IN)
+
+#INIT LED PWM
+
+LEDPIN = 22
+GPIO.setup(LEDPIN, GPIO.OUT) # Set pin 8 to be an output pin and set initial value to low (off)
+LED = GPIO.PWM(LEDPIN, 100)
+
+dutyCycleX= 0
+LED.start(dutyCycleX)
+
 
 def distance():
     # set Trigger to HIGH
@@ -55,46 +67,51 @@ def distance():
     # multiply with the sonic speed (34300 cm/s)
     # and divide by 2, because there and back
     distance = (TimeElapsed * 34300) / 2
-
+    print(distance)
     return distance
 
-#INIT LED PWM
 
-LEDPIN = 22
-GPIO.setup(LEDPIN, GPIO.OUT) # Set pin 8 to be an output pin and set initial value to low (off)
-LED = GPIO.PWM(LEDPIN, 100)
-
-dutyCycle = 0
-LED.start(dutyCycle)
-
-def fadeLED(int target):
-    if target > dutyCycle:
-        for x in range(dutyCycle, target + 1, 1):
+def fadeLED(target, dutyCycleX):
+    if target > dutyCycleX:
+        for x in range(dutyCycleX, target + 1, 1):
             LED.ChangeDutyCycle(x)
             sleep(0.01)
     else:
-        for x in range(dutyCycle, target - 1, -1):
+        for x in range(dutyCycleX, target - 1, -1):
             LED.ChangeDutyCycle(x)
             sleep(0.01)
 
-    dutyCycle = target
+    dutyCycleX = target
 
 
-#variables
+# variables
 pos1 = False
 pos2 = False
 
-# TO DO: subscribe to pos2 here
+# subscribe to pos2 here
+client.subscribe(topic_lamp2)
 
-#do ForEVER
+#mqtt callback
+def on_message_c(client, userdata, message):
+    print(message.payload.decode());
+    pos2 = message.payload.decode()
+client.on_message = on_message_c
+
+# do ForEVER
 while True:
+    sleep(0.1)
     pos1 = distance() < 200
     if pos1:
-       fadeLED(100) # LED an
+       client.publish(topic_lamp1, 1)
+       fadeLED(100, dutyCycleX) # LED an
+       dutyCycleX = 100
     else:
+        client.publish(topic_lamp1, 0)
         if pos2:
-            fadeLED(50) # LED halb hell
+            fadeLED(50, dutyCycleX) # LED halb hell
+            dutyCycleX = 50
         else:
-            fadeLED(0) # LED aus
-
+            fadeLED(0, dutyCycleX) # LED aus
+            dutyCycleX = 0
+            
     # TO DO: publish pos1
