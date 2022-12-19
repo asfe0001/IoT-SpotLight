@@ -16,3 +16,15 @@ while True:
     for i in range(0, 100, 1):
         D2A.ChangeDutyCycle(100 - i);
         time.sleep(0.05);
+
+
+def dimLed(currVal, targetVal):
+    
+    
+    
+    while(currVal != targetVal):
+        D2A.ChangeDutyCycle(currVal);
+        
+        if (currVal greater targetVal) currVal = currVal - 1;
+    
+    
